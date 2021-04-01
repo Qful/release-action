@@ -15,7 +15,7 @@ describe("github", () => {
 
   describe("asset", () => {
     it("derives asset info from a path", async () => {
-      const { name, mime, size, file } = asset("tests/data/foo/bar.txt");
+      const { name, mime, size, file } = asset("__tests__/data/foo/bar.txt");
       assert.equal(name, "bar.txt");
       assert.equal(mime, "text/plain");
       assert.equal(size, 10);

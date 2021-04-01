@@ -105,8 +105,8 @@ describe("util", () => {
   describe("paths", () => {
     it("resolves files given a set of paths", async () => {
       assert.deepStrictEqual(
-        paths(["tests/data/**/*", "tests/data/does/not/exist/*"]),
-        ["tests/data/foo/bar.txt"]
+        paths(["__tests__/data/**/*", "__tests__/data/does/not/exist/*"]),
+        ["__tests__/data/foo/bar.txt"]
       );
     });
   });
@@ -114,8 +114,8 @@ describe("util", () => {
   describe("unmatchedPatterns", () => {
     it("returns the patterns that don't match any files", async () => {
       assert.deepStrictEqual(
-        unmatchedPatterns(["tests/data/**/*", "tests/data/does/not/exist/*"]),
-        ["tests/data/does/not/exist/*"]
+        unmatchedPatterns(["__tests__/data/**/*", "__tests__/data/does/not/exist/*"]),
+        ["__tests__/data/does/not/exist/*"]
       );
     });
   });
