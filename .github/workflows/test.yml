@@ -1,12 +1,20 @@
-name: Main
+name: Test
 
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'dist/**'
+      - '.github/workflows/test.yml'
+
 
 jobs:
   build:
+    if: github.repository == 'stopstopstop/release-action'
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install

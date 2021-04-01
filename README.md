@@ -1,28 +1,4 @@
 
-<div align="center">
-  📦 :octocat:
-</div>
-<h1 align="center">
-  action gh-release
-</h1>
-
-<p align="center">
-   A GitHub Action for creating GitHub Releases on Linux, Windows, and macOS virtual environments
-</p>
-
-<div align="center">
-  <img src="demo.png"/>
-</div>
-
-<div align="center">
-  <a href="https://github.com/stopstopstop/action-gh-release/actions">
-		<img src="https://github.com/stopstopstop/action-gh-release/workflows/Main/badge.svg"/>
-	</a>
-</div>
-
-
-<br />
-
 ## 🤸 Usage
 
 ### 🚥 Limit releases to pushes to tags
