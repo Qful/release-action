@@ -1,45 +1,36 @@
-# https://help.github.com/en/articles/metadata-syntax-for-github-actions
-name: 'GH Release'
-description: 'Github Action for creating Github Releases'
-author: 'stopstopstop'
+name: 'Upload files to a GitHub release'
+description: 'Upload files to a GitHub release (cross-platform)'
+author: 'Sven-Hendrik Haase'
+branding:
+  icon: archive
+  color: orange
 inputs:
-  body:
-    description: 'Note-worthy description of changes in release'
-    required: false
-  body_path:
-    description: 'Path to load note-worthy description of changes in release from'
-    required: false
-  name:
-    description: 'Gives the release a custom name. Defaults to tag name'
-    required: false
-  tag_name:
-    description: 'Gives a tag name. Defaults to github.GITHUB_REF'
-    required: false
-  draft:
-    description: 'Creates a draft release. Defaults to false'
-    required: false
+  repo_token:
+    description: 'GitHub token.'
+    required: true
+  file:
+    description: 'Local file to upload.'
+    required: true
+  tag:
+    description: 'Tag to use as a release.'
+    required: true
+  asset_name:
+    description: 'Name of the asset. When not provided will use the file name. Unused if file_glob is set to "true".'
+  overwrite:
+    description: 'Overwrite the release in case it already exists.'
+  file_glob:
+    description: 'If true the file can be a glob pattern, asset_name is ignored if this is true.'
   prerelease:
-    description: 'Identify the release as a prerelease. Defaults to false'
-    required: false
-  files:
-    description: 'Newline-delimited list of path globs for asset files to upload'
-    required: false
-  fail_on_unmatched_files:
-    description: 'Fails if any of the `files` globs match nothing. Defaults to false'
-    required: false
-  repository:
-    description: 'Repository to make releases against, in <owner>/<repo> format'
-    required: false
-env:
-  'GITHUB_TOKEN': 'As provided by Github Actions'
+    description: 'Mark the release as a pre-release. Defaults to "false".'
+  release_name:
+    description: 'Explicitly set a release name. Defaults to empty which will cause the release to take the tag as name on GitHub.'
+  body:
+    description: 'Content of the release text. Empty by default.'
+  repo_name:
+    description: 'Specify the name of the GitHub repository in which the GitHub release will be created, edited, and deleted. If the repository is other than the current, it is required to create a personal access token with `repo`, `user`, `admin:repo_hook` scopes to the foreign repository and add it as a secret. Defaults to the current repository'
 outputs:
-  url:
-    description: 'URL to the Release HTML Page'
-  upload_url:
-    description: 'URL for uploading assets to the release'
+  browser_download_url:
+    description: 'The publicly available URL of the asset.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
-branding:
-  color: 'green'
-  icon: 'package'
